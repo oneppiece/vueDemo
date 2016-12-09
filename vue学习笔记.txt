@@ -1,0 +1,57 @@
+引入 vue.js
+数据绑定:
+    声明作用域:
+    <div id="app">
+        {{ message }} //双向绑定
+    </div>
+    建vue对象.
+    el:对象(id,class,element)
+    data:json格式,绑定的数据
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: "Hello Vue! you load this page at " + new Date()
+        }
+    });
+
+    v-bind:title="message"
+    v-bind:id="dynamicId" //将dynamicId值和id属性的值绑定
+    v-bind:disabled="tag" //将dynamicId值和id属性的值绑定  tag: false
+    v-bind:属性被称为指令  将span的title属性跟vue的变量message双向绑定
+    v-model:
+    <div v-html="ele"></div> //编译成html文档
+
+    <input type="text" v-model="msg">
+循环，判断:
+    v-for="(value,key,index) in obj"
+    json:(item,index) in json.product;index:索引
+    array:(item,index) in array;
+    obj:(value,key,index) in obj;key:键
+
+    v-if="tag" tag: true
+    过滤:
+     filters: {
+                 filter1: function (pre, index) {   // pre :传入的item，index: 传入的index。filter1(index,index)第一个index:要传的值,第二个index:要传给变量的名字
+                     console.log('pre:' + pre);
+                     console.log('index:' + index);
+                     return '第一个' + pre;
+                 },
+                 filter2: function (prevalue, ex) {
+                     //console.log('pre2:' + pre);
+                     console.log('ex:' + ex);
+                     return prevalue;
+                 }
+     <li v-bind="ex" v-for="(item,index) in list">{{ item | filter1(index,index) | filter2('第二个',ex)}}</li>
+事件:
+    v-on:click="toast()"
+    var app = new Vue({
+           el: '#app',
+           data: {msg: "123"},
+           methods: {
+               toast: function () {
+                   this.msg += "456";
+               }
+           }
+
+       });
+指令(Directives):

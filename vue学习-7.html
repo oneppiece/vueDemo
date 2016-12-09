@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Vue实例</title>
+    <link rel="stylesheet" href="lib/Bootstrap-3.3.6/css/bootstrap.css">
+    <script src="lib/jquery.min.js"></script>
+    <script src="lib/Bootstrap-3.3.6/js/bootstrap.js"></script>
+    <script src="lib/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <p>{{ msg }}</p>
+    <input type="text" v-model="msg">
+    <button v-bind:id="dynamicId" class="btn btn-primary btn-block btn-sm" v-on:click="toast()">点我</button>
+    <button v-bind:disabled="tag">tag</button>
+    <ul>
+        <li v-bind="ex" v-for="(item,index) in list">{{ item | filter1(index,index) | filter2('第二个',ex)}}</li>
+    </ul>
+</div>
+</body>
+<script>
+    var data = {a: 1};
+    var vm = new Vue({
+        el: '#app',
+        data: {
+            tag: false,
+            msg: 'msg',
+            ex: '',
+            dynamicId: 50,
+            list: ['a111', 'b112', 'c113', 'd114', 'e115']
+        },
+        created: function () {
+            console.log('创建');
+        }, filters: {
+            filter1: function (pre, index) {
+                console.log('pre:' + pre);
+                console.log('index:' + index);
+                return '第一个' + pre;
+            },
+            filter2: function (prevalue, ex) {
+                //console.log('pre2:' + pre);
+                console.log('ex:' + ex);
+                return prevalue;
+            }
+        }
+    })
+</script>
+</html>

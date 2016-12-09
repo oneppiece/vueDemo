@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hello Vue</title>
+    <link rel="stylesheet" href="lib/Bootstrap-3.3.6/css/bootstrap.css">
+    <script src="lib/jquery.min.js"></script>
+    <script src="lib/Bootstrap-3.3.6/js/bootstrap.js"></script>
+    <script src="lib/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    {{ message }}
+    {{ mystr }}
+    {{ mynum }}
+    <ul v-for="(value,index) in message">
+        <li>{{ value }}++ {{ index }}</li>
+    </ul>
+</div>
+</body>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            mystr: '这是一个数字',
+            mynum: 55,
+            message: ['apple', 'bnana', 'peer'],
+            json: {name: '张三', age: 22}
+        }
+    });
+</script>
+</html>
