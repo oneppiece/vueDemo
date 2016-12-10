@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Vue实例</title>
+    <link rel="stylesheet" href="lib/Bootstrap-3.3.6/css/bootstrap.css">
+    <script src="lib/jquery.min.js"></script>
+    <script src="lib/Bootstrap-3.3.6/js/bootstrap.js"></script>
+    <script src="lib/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <parent-component data="你好"></parent-component>
+    <parent-component data="hello"></parent-component>
+    <parent-component data="hi"></parent-component>
+</div>
+</body>
+<script>
+    var data = 'parent data';
+    Vue.component('parent-component', {
+        props: ['data'],
+        template: '<button>{{ data }}</button>'
+    })
+    new Vue({
+        el: '#app'
+    });
+</script>
+</html>

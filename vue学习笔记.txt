@@ -55,3 +55,33 @@
 
        });
 指令(Directives):
+
+
+组件(Component):
+    注册:
+    //小写，并且包含一个短杠.先注册，再实例化
+    Vue.component('my-component', {
+    })
+    new Vue({})
+    <my-component></my-component>
+
+    局部注册:
+    var Child = {
+      template: '<div>A custom component!</div>'
+    }
+    new Vue({
+      // ...
+        components: {
+            // <my-component> 将只在父模板可用
+            'my-component': Child
+            }
+        })
+    向组件传参://data属性,用function返回!
+    Vue.component('my-component', {
+        template: '<span>{{ message }}</span>',
+            data: function(){
+              return 'this is a child data';
+            }
+        })
+    组件间通讯:使用Props传递数据
+    prop 是父组件用来传递数据的一个自定义属性。子组件需要显式地用 props 选项 声明 “prop”

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Vue实例</title>
+    <link rel="stylesheet" href="lib/Bootstrap-3.3.6/css/bootstrap.css">
+    <script src="lib/jquery.min.js"></script>
+    <script src="lib/Bootstrap-3.3.6/js/bootstrap.js"></script>
+    <script src="lib/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <p v-model="parentMsg">
+        <br>
+        <child-component v-bind:myMessage="parentMsg"></child-component>
+</div>
+</body>
+<script>
+    var parentMsg = 'parent data';
+    Vue.component('child-component', {
+        props: ['parentMsg'],
+        template: '<input type="text">{{ parentMsg }}</input>'
+    })
+    new Vue({
+        el: '#app',
+        data: {
+            parentMsg: 'parent data'
+        }
+    });
+</script>
+</html>

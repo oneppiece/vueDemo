@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <title>Vue实例</title>
+    <link rel="stylesheet" href="lib/Bootstrap-3.3.6/css/bootstrap.css">
+    <script src="lib/jquery.min.js"></script>
+    <script src="lib/Bootstrap-3.3.6/js/bootstrap.js"></script>
+    <script src="lib/vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <my-component></my-component>
+    <my-component></my-component>
+    <my-component></my-component>
+</div>
+</body>
+<script>
+    var data = {privateCount: 0};
+    Vue.component('my-component', {
+        template: '<button class="btn btn-primary btn-lg" v-on:click="privateCount+=2">{{ privateCount }}</button>',
+        data: function () {
+            return {privateCount: 0};
+        }
+    })
+    new Vue({
+        el: '#app'
+    });
+</script>
+</html>
