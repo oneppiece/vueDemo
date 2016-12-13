@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue主页</title>
+    <link rel="stylesheet" href="lib/Bootstrap-3.3.6/css/bootstrap.css">
+    <script src="lib/jquery.min.js"></script>
+    <script src="lib/Bootstrap-3.3.6/js/bootstrap.js"></script>
+    <script src="lib/vue.js"></script>
+
+</head>
+<body>
+<div id="app">
+    <label for="userid" class="control-label">ID</label>
+    <input type="text" name="userid" id="userid" v-model="item.userid" placeholder="请输入ID">
+    <br>
+    <label for="username" class="control-label">用户名</label>
+    <input type="text" name="username" id="username" v-model="item.username" placeholder="请输入用户名">
+    <br>
+    <label for="password" class="control-label">密码</label>
+    <input type="text" name="password" id="password" v-model="item.password" placeholder="请输入密码"><br>
+    <button class="btn btn-primary btn-sm" v-on:click="addRow">增加</button>
+    <table class="table table-bordered table-hover">
+        <thead>
+        <tr class="text-center">
+            <td>ID</td>
+            <td>用户名</td>
+            <td>密码</td>
+            <td>操作</td>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr v-for="(item,index) in peopleList" class="text-center">
+            <td>{{ item.userid }}</td>
+            <td>{{ item.username }}</td>
+            <td>{{ item.password }}</td>
+            <td>
+                <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#updateModal"
+                        v-on:click="update(item,index)">
+                    <i class="glyphicon glyphicon-pencil"></i>
+                </button>
+                <button class="btn btn-sm btn-danger" data-toggle="modal" data-target="#tipmodal">
+                    <i class="glyphicon glyphicon-remove"></i>
+                </button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <div id="updateModal" class="modal fade in">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">修改</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group form-inline">
+                            <label for="useridmodal" class="control-label col-md-4">id:</label>
+                            <input type="text" id="useridmodal" class="form-control" v-model="item.userid">
+                        </div>
+                        <div class="form-group form-inline">
+                            <label for="usernamemodal" class="control-label col-md-4">用户名:</label>
+                            <input type="text" id="usernamemodal" class="form-control"
+                                   v-model="item.username">
+                        </div>
+                        <div class="form-group form-inline">
+                            <label for="userpasswordmodal" class="control-label col-md-4">密码:</label>
+                            <input type="text" id="userpasswordmodal" class="form-control form-inline"
+                                   v-model="item.password">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger btn-sm" v-on:click="doUpdate">修改</button>
+                    <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal">取消</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<div id="tipmodal" class="modal fade in">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">删除</h4>
+            </div>
+            <div class="modal-body">
+                <p>确定删除?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger btn-sm">删除</button>
+                <button type="button" class="btn btn-primary btn-sm" data-dismiss="modal">取消</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+<script src="app.js"></script>
+</html>
