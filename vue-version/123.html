@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>123</title>
+</head>
+<body>
+<div id="app">
+    <v-alert ></v-alert>
+</div>
+
+
+<script src="../lib/vue.js"></script>
+<script src="../lib/vue-strap.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        components: {
+            vSelect: VueStrap.select
+        },
+        data: {
+            options: [{a: 1}]
+        }
+    })
+</script>
+</body>
+</html>

@@ -1,9 +1,14 @@
 /**
  * Created by Administrator on 2016/12/13.
  */
+Vue.component('parent-component', {
+    props: ['data'],
+    template: '<button>{{ data }}</button>'
+})
 new Vue({
     el: '#app',
     data: {
+        options: [],
         index: 0,
         item: {
             userid: 0,
@@ -40,6 +45,11 @@ new Vue({
         doUpdate: function () {
             console.log(this.index);
             console.log(this.item.userid);
+        },
+        doDelete: function () {
+            alert(1);
+            delete this.peopleList[this.index];
+            console.log(this.peopleList);
         }
     }
 });
