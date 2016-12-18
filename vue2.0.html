@@ -28,6 +28,13 @@
     </form>
     <br>
     <span v-bind:style="styleObjecst">asdsad</span>
+    <hr>
+    <h1 v-if="ok">{{ msg }}</h1>
+    <h1 v-else>{{ msg }}</h1>
+    <h1 v-if="type==='A'">{{ "A" }}</h1>
+    <h1 v-else-if="type==='B'">{{ "B" }}</h1>
+    <h1 v-else-if="type==='C'">{{ "C" }}</h1>
+    <h1 v-else>{{ "NO" }}</h1>
 </div>
 </body>
 <script src="vueApp2.0.js"></script>

@@ -15,7 +15,9 @@ var app = new Vue({
             'has-feedback': true
         },
         myList: [{text: 'One'}, {text: 'Two'}, {text: 'Three'}],
-        msg: 'msg'
+        msg: 'msg',
+        ok: true,
+        type: 'A'
     },
     computed: {
         computeMsg: {
